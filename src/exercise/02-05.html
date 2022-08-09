@@ -1,0 +1,40 @@
+<!-- Intro to raw React APIs -->
+<!-- file:///Users/asilva/Documents/GitProjects/EpicReact/exercises/react-fundamentals/src/exercise/02-05.html -->
+
+<body>
+    <div id="root"></div>
+    
+    <script src="https://unpkg.com/react@18.1.0/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18.1.0/umd/react-dom.development.js"></script>
+
+    <!-- <body>
+        <div id="root">
+          <div class="container">
+            <span>Hello</span>
+            <span>World</span>
+          </div>
+        </div>
+      </body> -->
+
+    <script type="module">
+      const rootElement = document.getElementById('root');
+
+      const epSpan1 = {children : "Hello "};
+      const etSpan1 = "span";
+
+      const span1 = React.createElement(etSpan1, epSpan1);
+
+      const epSpan2 = {children : "World"};
+      const span2 = React.createElement(etSpan1, epSpan2);
+ 
+      const elementProperties = {children : [span1, span2], className : "container"};
+      const elementType = "div";
+  
+      const newElement = React.createElement(elementType, elementProperties);
+  
+      const root = ReactDOM.createRoot(rootElement);
+      root.render(newElement);      
+      
+    </script>
+  </body>
+  
