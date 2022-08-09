@@ -1,6 +1,30 @@
 <!-- Basic JavaScript-rendered Hello World -->
 <!-- http://localhost:3000/isolated/exercise/01.html -->
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body id="root">
+
+    <script type="module" >
+        console.log("Aqui estou eu");
+
+        const mydiv = document.createElement("div");
+        mydiv.textContent = "My Hello World...";
+        mydiv.className = "container";
+        const rootNode = document.getElementById("root");
+        rootNode.append(mydiv);
+
+    </script>
+</body>
+
+</html>
+
 <!-- 🐨 Create (in HTML) a <body> with a <div> with the id of "root" -->
 <!-- 🐨 Then create a <script type="module"> for your JavaScript -->
 <!--   📜 https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#attributes -->
