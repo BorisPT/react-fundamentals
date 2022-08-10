@@ -9,8 +9,8 @@
   <script src="https://unpkg.com/@babel/standalone@7.12.4/babel.js"></script>
  
 
-  // interessante : any script that is tagged as "text/babel" will be compiled by babel, so we can mix
-  // JavaScript and JSX
+  <!-- // interessante : any script that is tagged as "text/babel" will be compiled by babel, so we can mix
+  // JavaScript and JSX -->
   <script type="text/babel">
     
     // 🐨 on the script tag above, change `type="module"`
@@ -28,7 +28,11 @@
       children : children, 
       className : className
     }; 
-    const elementJsx = <div {...props}/> // how do I apply props to this div?
+
+    // interessante : spreading the object properties 
+    // The order matters! If we define a className="default" after the props spreading, it will override the props.
+    // If we do this 'const elementJsx = <div {...props} className="default"/>', the final className for this element will be "default"
+    const elementJsx = <div {...props}/> 
 
     // https://reactjs.org/docs/dom-elements.html#differences-in-attributes
 
