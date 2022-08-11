@@ -22,6 +22,7 @@
      // The "PropTypes" object can be associated with each of the needed validation for the properties.
      // https://reactjs.org/docs/typechecking-with-proptypes.html
      // We can chain "isRequired" to have an error if a property is null or undefined.
+     // NOTE: if we are using a typed language, like TypeScript, we probably don't need PropType validation.
      Message.propTypes = {
       greeting : PropTypes.string.isRequired,
       subject : PropTypes.string.isRequired

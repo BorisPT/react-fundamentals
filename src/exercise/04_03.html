@@ -12,8 +12,14 @@
     // interessante : define validators by hand. Although, there are packages for that, from the React Team.
     // More details at: https://reactjs.org/docs/typechecking-with-proptypes.html
     const PropertyValidators = {
+
+      // interessante : these three parameters are passed into the validator.
       string(props, propName, componentName) 
       {
+        console.log("Props:", props);
+        console.log("PropName:", propName);
+        console.log("Component Name:", componentName);
+
         if (typeof props[propName] !== 'string') 
         {
             return new Error(`${propName} - It must be a string`)
@@ -36,7 +42,9 @@
      };
      
      // interessante : define the property types for this component.
-     // Associate each prop to its custom validator.
+     // Associate each prop to its custom validator. React will access this object
+     // when rendering the component and invoke the validator for these properties.
+     // React does not do this in production, because there are overheads associated with this.
      Message.propTypes = {
       greeting : PropertyValidators.string,
       subject : PropertyValidators.string
