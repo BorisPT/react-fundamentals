@@ -8,7 +8,7 @@ const Box = props => {
   return (
     <div
       style={{fontStyle: 'italic', ...props.style}}
-      className={`box box--${props.size}`}
+      className={`box ${props.className}`}
     >
       {props.children}
     </div>
@@ -17,20 +17,20 @@ const Box = props => {
 
 // const smallBox = <div style={{backgroundColor: 'lightblue', fontStyle: "italic" }} className="box box--small">small lightblue box</div>
 const smallBox = (
-  <Box size="small" style={{backgroundColor: 'lightblue'}}>
+  <Box className="box--small" style={{backgroundColor: 'lightblue'}}>
     small lightblue box
   </Box>
 );
 
 const mediumBox = (
-<Box size="medium" style={{backgroundColor: 'pink'}}>
+<Box className="box--medium" style={{backgroundColor: 'pink'}}>
   medium pink box
 </Box>
 );
 
 const largeBox = (
 
-<Box size="large" style={{backgroundColor: 'orange'}}>
+<Box className="box--large" style={{backgroundColor: 'orange'}}>
   large orange box
 </Box>  
 
