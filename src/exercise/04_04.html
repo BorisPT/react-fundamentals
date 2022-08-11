@@ -6,26 +6,9 @@
   <script src="https://unpkg.com/react@18.1.0/umd/react.development.js"></script>
   <script src="https://unpkg.com/react-dom@18.1.0/umd/react-dom.development.js"></script>
   <script src="https://unpkg.com/@babel/standalone@7.12.4/babel.js"></script>
+  <script src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>
   <script type="text/babel">
     
-
-    // interessante : define validators by hand. Although, there are packages for that, from the React Team.
-    // More details at: https://reactjs.org/docs/typechecking-with-proptypes.html
-    const PropertyValidators = {
-      string(props, propName, componentName) 
-      {
-        if (typeof props[propName] !== 'string') 
-        {
-            return new Error(`${propName} - It must be a string`)
-        }
-
-        if (props[propName].trim().length === 0) 
-        {
-            return new Error(`${propName} is required`)
-        }
-      }
-    }
-
     // interessante : defining the component
     const Message = ({greeting, subject}) => { 
 
@@ -35,17 +18,19 @@
     
      };
      
-     // interessante : define the property types for this component.
-     // Associate each prop to its custom validator.
+     // interessante : use the prop-types.js package.
+     // The "PropTypes" object can be associated with each of the needed validation for the properties.
+     // https://reactjs.org/docs/typechecking-with-proptypes.html
+     // We can chain "isRequired" to have an error if a property is null or undefined.
      Message.propTypes = {
-      greeting : PropertyValidators.string,
-      subject : PropertyValidators.string
+      greeting : PropTypes.string.isRequired,
+      subject : PropTypes.string.isRequired
      }
 
 
     const element = (
       <div className="container">
-        <Message greeting="Hello" subject=""/>
+        <Message greeting="Hello" />
         <Message greeting={false} subject="World"/>
       </div>
     )

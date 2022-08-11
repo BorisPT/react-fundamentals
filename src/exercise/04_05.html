@@ -1,0 +1,41 @@
+<!-- Creating custom components -->
+<!-- http://localhost:3000/isolated/exercise/04.html -->
+
+<body>
+  <div id="root"></div>
+  <script src="https://unpkg.com/react@18.1.0/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18.1.0/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.12.4/babel.js"></script>
+  <script src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>
+  <script type="text/babel">
+    
+    // interessante : defining the component
+    const Message = ({greeting, subject}) => { 
+
+      return (
+        <div className="message">{greeting}, {subject} </div>
+      );
+    
+     };
+     
+     // interessante : use the prop-types.js package.
+     // The "PropTypes" object can be associated with each of the needed validation for the properties.
+     // https://reactjs.org/docs/typechecking-with-proptypes.html
+     // We can chain "isRequired" to have an error if a property is null or undefined.
+     Message.propTypes = {
+      greeting : PropTypes.string.isRequired,
+      subject : PropTypes.string.isRequired
+     }
+
+
+    const element = (
+      <React.Fragment>
+        <Message greeting="Hello" subject="Shakira"/>
+        <Message greeting="Greetings" subject="World"/>
+      </React.Fragment>
+    )
+
+    // 💯 This is only the first step to making actual React components. The rest is in the extra credit!
+    ReactDOM.createRoot(document.getElementById('root')).render(element)
+  </script>
+</body>
