@@ -21,13 +21,18 @@ function UsernameForm({onSubmitUsername}) {
     // interessante : we can access the value in the input control by using any of these ways.
     onSubmitUsername(event.target[0].value);
     onSubmitUsername(event.target.elements[0].value);
-    onSubmitUsername(event.target.elements.userNameInput.value);
+
+    // interessante : this is the recommended way, so we are not dependant on the order of the inputs.
+    onSubmitUsername(event.target.elements.userNameInput.value); 
   
    };
 
   return (
     <form onSubmit={handleSubmit}>
       <div>
+        {/* // interessante : htmlFor
+        // This is for screen readers to relate the label to the input, but also if we click the label, the browser
+        // will highlight the input field that is related to this label. */}        
         <label htmlFor='userNameInput'>Username:</label>
         {/* // interessante : if we don't prevent the default behaviour of the event on the form submit handler,
         // then the browser will make a new request to the same page (causing a page refresh) where query parameters
