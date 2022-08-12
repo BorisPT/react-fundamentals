@@ -4,11 +4,14 @@
 import * as React from 'react'
 import '../box-styles.css'
 
+// interessante : another way to do this would be to de-structure the "className" and the "style" props
+// and have the remaining props with the rest operator (...otherProps) and apply them in the div afterwards.
+// This would also be important to preserve the other properties that we don't want to touch.
 const Box = props => {
   return (
     <div
       style={{fontStyle: 'italic', ...props.style}}
-      className={`box ${props.className}`}
+      className={`box ${props.className ?? ""}`}      
     >
       {props.children}
     </div>
@@ -41,7 +44,7 @@ function App() {
     <div>
       {smallBox}
       {mediumBox}
-      {largeBox}
+      {largeBox}      
     </div>
   )
 }
