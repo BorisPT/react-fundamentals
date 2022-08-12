@@ -40,8 +40,11 @@ function UsernameForm({onSubmitUsername}) {
         <label htmlFor='userNameInput'>Username:</label>
         <input id="userNameInput" type="text" ref={usernameInputRef} onChange={usernameChangeHandler}/>
       </div>
-      <button type="submit" disabled={error}>Submit</button>
-      {error && <p role="alert">{error}</p>}
+      {/* // interessante : make sure we are disabling the button with a boolean value.
+      // Note that using the "error" state would be fine, with truthy or falsy values, 
+      // this is just for exercise purposes */}
+      <button type="submit" disabled={Boolean(error)}>Submit</button>
+      {error && <p style={{color : "red"}} role="alert">{error}</p>}
     </form>
   )
 }

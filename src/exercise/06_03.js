@@ -35,6 +35,8 @@ function UsernameForm({onSubmitUsername}) {
       <div>
         <label htmlFor='userNameInput'>Username:</label>
         {/* // interessante : using a change handler and the "value" prop to control the form and correct the user input to lowercase */}
+        {/* // Note that if we use a controlled input like this, we MUST specify a change handler, otherwise the input will be readonly  */}
+        {/* // Also, if we want a default value on the input field, we use the "defaultValue" attribute */}
         <input id="userNameInput" type="text"  onChange={usernameChangeHandler} value={username}/>
       </div>
       <button type="submit" >Submit</button>      
