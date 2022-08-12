@@ -5,9 +5,10 @@ import * as React from 'react'
 
 function UsernameForm({onSubmitUsername}) {
 
-  const usernameInputRef = React.useRef("");
-
-  const [error, setError] = React.useState("");
+  // interessante : we use the "useState" hook to handle changes in the username input field and also 
+  // to make sure we always keep the input field updated, with the "value" prop. This way, the form is controlled,
+  // and as the user inputs the value, we can control what is being fed back into the input value
+  const [username, setUsername] = React.useState("");
 
   const handleSubmit = (event) => { 
 
@@ -15,33 +16,28 @@ function UsernameForm({onSubmitUsername}) {
 
     console.log("Event:", event);
 
-    // interessante : using ref to get the input value
-    onSubmitUsername(usernameInputRef.current.value);
+    // interessante : using the value in the state variable to get the input value
+    onSubmitUsername(username);
    };
 
   const usernameChangeHandler = (event) => { 
 
     // interessante : note that here we are getting the value from the input field and not the whole form.
     const currentValue = event.target.value;
+    const settingTo = currentValue.toLowerCase();
 
-    if(currentValue !== currentValue.toLowerCase())
-    {
-      setError("You must use only lowercase letters.");
-    }
-    else
-    {
-      setError(null);
-    }
+    console.log(`Setting ${currentValue} to ${settingTo} in the state variable`);
+    setUsername(settingTo);
    };
 
   return (
     <form onSubmit={handleSubmit}>
       <div>
         <label htmlFor='userNameInput'>Username:</label>
-        <input id="userNameInput" type="text" ref={usernameInputRef} onChange={usernameChangeHandler}/>
+        {/* // interessante : using a change handler and the "value" prop to control the form and correct the user input to lowercase */}
+        <input id="userNameInput" type="text"  onChange={usernameChangeHandler} value={username}/>
       </div>
-      <button type="submit" disabled={error}>Submit</button>
-      {error && <p role="alert">{error}</p>}
+      <button type="submit" >Submit</button>      
     </form>
   )
 }
